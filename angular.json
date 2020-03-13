@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "drone-frontend": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "drone-frontend"
+    }
+  },
+  "defaultProject": "drone-frontend",
+  "cli": {
+    "analytics": "acdf8a71-c0df-431c-bdae-b66e79330612"
+  }
 }
