@@ -1,0 +1,80 @@
+.app-title {
+    font-family: 'Bellota', cursive;
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  
+  .fill-space {
+    flex: 1 1 auto;
+  }
+  
+  .logout-text {
+    font-family: 'Montserrat', Roboto;
+    margin-left: 3px;
+  }
+  
+  .user-name {
+    margin-right: 10px;
+    font-family: 'Montserrat', Roboto;
+  }
+  
+  .sidenav {
+    width: 15%;
+  }
+  
+  .sidenav-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 22px;
+  }
+  
+  .sidenav-container {
+    position: relative;
+    min-height: 100%;
+    background: #eee;
+  
+    .sidenav {
+      width: 15%;
+      background-color: #512DA8;
+      color: whitesmoke;
+  
+      .sidenav-link-container {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        color: white;
+  
+        .sidenav-link-list {
+          width: 100%;
+          margin-top: 40%;
+  
+          .sidenav-link {
+            font-family: 'Montserrat', Roboto;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+  
+            .list-text {
+              margin-left: 3rem;
+            }
+          }
+  
+          .sidenav-link:hover {
+            background-color: #4527A0;
+          }
+  
+          .link-active {
+            .sidenav-link {
+              background-color: #4527A0;
+            }
+  
+          }
+        }
+      }
+    }
+  
+  }
+  

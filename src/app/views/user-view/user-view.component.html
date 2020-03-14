@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="app-title">DroneBlaze</span>
+      <span class="fill-space"></span>
+      <span class="user-name">{{user?.userName}}</span>
+      <span *ngIf="userLoggedIn">
+        <button mat-raised-button color="accent">
+          <mat-icon svgIcon="logout"></mat-icon><span class="logout-text">logout</span>
+        </button>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav opened mode="side" class="sidenav">
+      <div class="sidenav-link-container">
+        <mat-list class="sidenav-link-list">
+          <mat-divider></mat-divider>
+          <a routerLink="/home/dashboard" routerLinkActive="link-active">
+            <mat-list-item class="sidenav-link">
+              <mat-icon svgIcon="dashboard"></mat-icon><span class="list-text">Dashboard</span>
+            </mat-list-item>
+          </a>
+          <mat-divider></mat-divider>
+          <a routerLink="/home/drones" routerLinkActive="link-active">
+            <mat-list-item class="sidenav-link">
+              <mat-icon svgIcon="drone"></mat-icon><span class="list-text">Drones</span>
+            </mat-list-item>
+          </a>
+          <mat-divider></mat-divider>
+          <a routerLink="/home/routes" routerLinkActive="link-active">
+            <mat-list-item class="sidenav-link">
+              <mat-icon svgIcon="route"></mat-icon><span class="list-text">Routes</span>
+            </mat-list-item>
+          </a>
+          <mat-divider></mat-divider>
+          <a routerLink="/home/feeds" routerLinkActive="link-active">
+            <mat-list-item class="sidenav-link">
+              <mat-icon svgIcon="feed"></mat-icon><span class="list-text">Feeds</span>
+            </mat-list-item>
+          </a>
+          <mat-divider></mat-divider>
+          <a routerLink="/home/location" routerLinkActive="link-active">
+            <mat-list-item class="sidenav-link">
+              <mat-icon svgIcon="location"></mat-icon><span class="list-text">Locations</span>
+            </mat-list-item>
+          </a>
+          <mat-divider></mat-divider>
+          <a routerLink="/home/settings" routerLinkActive="link-active">
+            <mat-list-item class="sidenav-link">
+              <mat-icon svgIcon="settings"></mat-icon><span class="list-text">Settings</span>
+            </mat-list-item>
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
