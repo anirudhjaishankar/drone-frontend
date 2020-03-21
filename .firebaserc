@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "drone-backend": {
+      "hosting": {
+        "drone-frontend": [
+          "drone-backend"
+        ]
+      }
+    }
+  }
+}

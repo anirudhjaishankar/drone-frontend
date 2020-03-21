@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-view',
@@ -10,12 +12,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class UserViewComponent implements OnInit {
 
   title: string;
-  userLoggedIn: boolean = false;
-  user: any = {};
+  username: string;
 
   constructor(
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.matIconRegistry.addSvgIcon(
       'drone',
@@ -42,8 +45,15 @@ export class UserViewComponent implements OnInit {
 
   ngOnInit() {
     this.title = 'DroneBlaze';
-    this.userLoggedIn = true;
-    this.user.userName = 'Anirudh Jaishanakar';
+    setTimeout(() => {
+      this.username = this.authService.username;
+    }, 1000);
+  }
+
+  logout() {
+    this.authService.isLoggedIn = false;
+    localStorage.clear();
+    this.router.navigate(['/']);
   }
 
 }

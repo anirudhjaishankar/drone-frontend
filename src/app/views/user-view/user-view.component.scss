@@ -50,6 +50,10 @@
         .sidenav-link-list {
           width: 100%;
           margin-top: 40%;
+
+          a {
+            text-decoration: none;
+          }
   
           .sidenav-link {
             font-family: 'Montserrat', Roboto;

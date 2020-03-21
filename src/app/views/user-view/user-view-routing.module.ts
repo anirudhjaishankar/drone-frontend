@@ -8,11 +8,13 @@ import { FeedComponent } from 'src/app/components/feed/feed.component';
 import { LocationComponent } from 'src/app/components/location/location.component';
 import { SettingsComponent } from 'src/app/components/settings/settings.component';
 import { UserViewComponent } from './user-view.component';
+import { AuthGuard } from 'src/app/services/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
     component: UserViewComponent,
+    canActivate: [AuthGuard],
     children: [{
       path: 'dashboard', component: DashboardComponent
     },

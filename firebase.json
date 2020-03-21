@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "drone-frontend",
+      "public": "dist/drone-frontend",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
