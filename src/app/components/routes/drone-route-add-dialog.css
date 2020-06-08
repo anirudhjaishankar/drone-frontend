@@ -1,0 +1,43 @@
+.map-view {
+    height: 300px;
+    width: 500px;
+}
+
+.input {
+    width: 100%;
+}
+
+.location-header {
+    margin-left: 1rem;
+}
+
+.location-details {
+    width: 100%;
+    margin-left: 2rem;
+}
+
+.lat-lng {
+    font-family: 'Montserrat', Roboto;
+    margin-bottom: 0.5rem;
+    margin-left: 1rem;
+    display: block
+}
+
+.location {
+    width: 26vw;
+    border-top: 0.5px solid #e8e5e5;
+    padding: 1rem 0;
+}
+.mid-section {
+    max-width: 26vw;
+}
+
+.divider {
+    width: 26vw;
+}
+
+.add-button {
+    margin-top: 1rem;
+    margin-left: 11vw;
+    margin-bottom: 1rem;
+}

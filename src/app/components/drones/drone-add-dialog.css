@@ -1,0 +1,13 @@
+.map-view {
+    height: 300px;
+    width: 500px;
+}
+
+.input {
+    width: 100%;
+}
+
+.location-label{
+    font-family: 'Montserrat', Roboto;
+    margin-bottom: 0.5rem;
+}

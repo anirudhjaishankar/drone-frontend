@@ -6,7 +6,7 @@ import { LoginComponent } from './views/login/login.component';
 
 const routes: Routes = [
   {
-    path:'login', component:LoginComponent
+    path: 'login', component: LoginComponent
   },
   {
     path: '', redirectTo: '/login', pathMatch: 'full'
@@ -20,4 +20,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

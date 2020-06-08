@@ -1,0 +1,35 @@
+<h1 mat-dialog-title class='dialog-title'>Add Drone Route</h1>
+<div mat-dialog-content>
+  <div [formGroup]="form">
+    <mat-form-field class='input'>
+      <mat-label>Route Name</mat-label>
+      <input matInput formControlName='name'>
+    </mat-form-field>
+  </div>
+  <div class="mid-section">
+    <h3> *Select the radio button and drag the marker on the map</h3>
+    <mat-radio-group [(ngModel)]="currentSelectedLocation">
+      <mat-radio-button class="location" *ngFor="let location of locations" [value]="location">
+        <div class="location-details">
+          <h3 class="location-header">{{location.name}}</h3>
+          <span class="lat-lng">Latitude: {{location.latitude}}</span>
+          <span class="lat-lng">Longitude: {{location.longitude}}</span>
+        </div>
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-divider class="divider"></mat-divider>
+  </div>
+  <button mat-raised-button (click)="addNewLocation()" class="add-button">Add</button>
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="placeMarker($event)"
+    class="map-view">
+    <div *ngFor="let location of locations">
+      <agm-marker [latitude]="location.latitude" [longitude]="location.longitude" [label]="location.name"
+        [markerDraggable]="currentSelectedLocation && currentSelectedLocation.name == location.name"
+        (dragEnd)="changePosition($event)"></agm-marker>
+    </div>
+  </agm-map>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()" color="danger">Cancel</button>
+  <button mat-raised-button (click)="submit(this.form.value)" color="accent" cdkFocusInitial>Submit</button>
+</div>

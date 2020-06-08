@@ -1,1 +1,29 @@
-<p>settings works!</p>
+<div class='component-body'>
+  <h1 class="page-header">Settings</h1>
+  <mat-divider></mat-divider>
+
+  <div class="form">
+    <h2 class="form-header">Update User Data</h2>
+    <form [formGroup]='changePasswordForm'>
+      <mat-form-field class='input'>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName='name'>
+      </mat-form-field>
+      <mat-form-field class='input'>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName='email'>
+      </mat-form-field>
+      <mat-form-field class='input'>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName='password' type='password'>
+      </mat-form-field>
+      <mat-form-field class='input'>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName='confirmPassword' type='password'>
+      </mat-form-field>
+
+      <button mat-raised-button class='button' color="accent" (click)="submit(changePasswordForm.value)">Save</button>
+    </form>
+  </div>
+
+</div>

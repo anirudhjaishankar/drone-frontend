@@ -1,1 +1,59 @@
-<p>routes works!</p>
+<div class='component-body'>
+  <h1 class="page-header">Routes</h1>
+  <mat-divider></mat-divider>
+  <div class='no-content' *ngIf="!allDroneRoutes || allDroneRoutes.length === 0">
+    <span class='no-content-text'>No Routes present</span>
+  </div>
+  <div class="expand-list">
+    <mat-accordion *ngIf="allDroneRoutes">
+      <mat-expansion-panel *ngFor="let droneRoute of allDroneRoutes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{droneRoute.pathName}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{droneRoute.createdBy}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="panel-body">
+          <div class="panel-checkpoints">
+            <div>
+              <h2 class="panel-header">No of checkpoints: {{droneRoute.numberOfCheckpoints}}</h2>
+            </div>
+            <div>
+              <button mat-mini-fab (click)="deleteDroneRoute(droneRoute.id)" color="warn">
+                <mat-icon svgIcon="delete"></mat-icon>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="panel-map">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" class="map-view">
+              <div *ngFor="let location of droneRoute.checkpoints">
+                <agm-marker [latitude]="location.latitude" [longitude]="location.longitude" [label]="location.name">
+                </agm-marker>
+              </div>
+            </agm-map>
+
+            <div class="location-list">
+              <h2 class="list-header">List of points</h2>
+              <div class="list-content">
+                <div class="list-item" *ngFor="let location of droneRoute.checkpoints">
+                  <span class="location-name">Marker label: {{location.name}}</span>
+                  <span class="lat-lng"> Latitude: {{location.latitude}}</span>
+                  <span class="lat-lng"> Longitude: {{location.longitude}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <button mat-fab color="accent" class="float-button" (click)='addDroneRouteDialogOpen()'>
+    <mat-icon svgIcon="add"></mat-icon>
+  </button>
+</div>

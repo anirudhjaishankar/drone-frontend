@@ -1,0 +1,111 @@
+.component-body {
+  height: 100vh;
+
+  .page-header {
+    font-family: 'Montserrat', Roboto;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .no-content {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .no-content-text {
+    font-size: 2rem;
+    font-family: 'Montserrat', Roboto;
+    color: grey;
+  }
+
+  .float-button {
+    position: absolute;
+    top: 80vh;
+    left: 78vw;
+    z-index: 2;
+  }
+
+  .expand-list {
+    margin: 1rem;
+
+    .panel-checkpoints {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+
+      .panel-header {
+        font-family: 'Montserrat', Roboto;
+      }
+    }
+
+    .panel-map {
+      display: flex;
+
+      .map-view {
+        height: 50vh;
+        width: 50vw;
+      }
+
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      .location-list {
+        margin-left: 4rem;
+        padding-right: 6rem;
+        max-height: 50vh;
+        overflow-y: scroll;
+
+
+        .list-header {
+          font-family: 'Montserrat', Roboto;
+        }
+
+        .list-content {
+          margin-top: 1rem;
+
+          .list-item {
+            margin-bottom: 1rem;
+
+            .location-name {
+              font-family: 'Montserrat', Roboto;
+              display: block;
+              width: 100%;
+            }
+
+            .lat-lng {
+              margin-top: 0.2rem;
+              font-family: 'Montserrat', Roboto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+}

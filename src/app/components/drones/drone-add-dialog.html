@@ -1,0 +1,17 @@
+<h1 mat-dialog-title class='dialog-title'>Add Drone</h1>
+<div mat-dialog-content [formGroup]='form'>
+  <mat-form-field class='input'>
+    <mat-label>Drone Name</mat-label>
+    <input matInput formControlName='name'>
+  </mat-form-field>
+    <h2>Place a marker to mark origin</h2>
+    <div class='location-label'>latitude: {{latitude}}</div>
+    <div class='location-label'>longitude: {{longitude}}</div>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" (mapClick)="placeMarker($event)" class="map-view">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" *ngIf="isPlacedMarker"></agm-marker>
+    </agm-map>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()" color="danger">Cancel</button>
+  <button mat-raised-button (click)="submit(this.form.value)" color="accent" cdkFocusInitial>Add</button>
+</div>

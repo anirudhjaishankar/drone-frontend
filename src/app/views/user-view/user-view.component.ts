@@ -13,11 +13,12 @@ export class UserViewComponent implements OnInit {
 
   title: string;
   username: string;
+  role: number;
 
   constructor(
+    private authService: AuthService,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    private authService: AuthService,
     private router: Router
   ) {
     this.matIconRegistry.addSvgIcon(
@@ -41,19 +42,23 @@ export class UserViewComponent implements OnInit {
     this.matIconRegistry.addSvgIcon(
       'logout',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../../assets/power_settings_new-24px.svg'));
+    this.matIconRegistry.addSvgIcon(
+      'users',
+      this.domSanitizer.bypassSecurityTrustResourceUrl('../../assets/group-24px.svg'));
   }
 
   ngOnInit() {
     this.title = 'DroneBlaze';
-    setTimeout(() => {
-      this.username = this.authService.username;
-    }, 1000);
+    this.username = localStorage.getItem('NAME');
+    this.role = JSON.parse(localStorage.getItem('ROLE'));
   }
 
   logout() {
-    this.authService.isLoggedIn = false;
-    localStorage.clear();
-    this.router.navigate(['/']);
+    this.authService.logout().then(() => {
+      this.authService.isLoggedIn = false;
+      localStorage.clear();
+      this.router.navigate(['/']);
+    });
   }
 
 }

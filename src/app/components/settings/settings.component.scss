@@ -1,0 +1,33 @@
+.component-body {
+  height: 100vh;
+
+  .page-header {
+    font-family: 'Montserrat', Roboto;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .form {
+    width: 30%;
+    margin-left: 35%;
+
+    .form-header {
+      font-size: 2rem;
+      font-family: 'Montserrat', Roboto;
+      text-align: center;
+      margin-top: 15%;
+      margin-bottom: 26%;
+    }
+
+    .input {
+      width: 100%;
+      margin-top: 2%;
+      margin-bottom: 2%;
+    }
+
+    .button {
+      margin-left: 45%;
+    }
+  }
+}

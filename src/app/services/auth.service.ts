@@ -1,50 +1,26 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-
-import 'firebase/firestore';
-import 'firebase/auth';
-
+import { HttpClient } from '@angular/common/http';
+import { loginUrl, devUrl, logoutUrl } from '../constants';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn: boolean;
-  username: string;
+
+  isLoggedIn = false;
+  name: string;
+  userRole: number;
 
   constructor(
-    private fireAuth: AngularFireAuth,
-    private fireStore: AngularFirestore
-  ) { }
-
-
-  login(): Promise<any> {
-    return this.fireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((res) => {
-      this.fireStore.collection('users').doc(res.user.uid).get().subscribe(data => {
-        if (data.exists) {
-          this.setLocalStorage(res, data.get('role'));
-          return Promise.resolve();
-        }
-      });
-    },
-      (rej) => {
-        return Promise.reject();
-      }).catch(err => {
-        console.log(err);
-        return Promise.reject(err);
-      });
+    private http?: HttpClient
+  ) {
+    this.isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
   }
 
+  login(data): Promise<any> {
+    return this.http.post(devUrl + loginUrl, { email: data.email, password: data.password }).toPromise();
+  }
 
-  setLocalStorage(res, role) {
-    localStorage.clear();
-    this.username = res.additionalUserInfo.profile.name;
-    localStorage.setItem('ID_TOKEN', res.credential.idToken);
-    localStorage.setItem('ACCESS_TOKEN', res.credential.accessToken);
-    localStorage.setItem('EMAIL', res.additionalUserInfo.profile.email);
-    localStorage.setItem('USERNAME', this.username);
-    localStorage.setItem('ROLE', role);
-
+  logout(): Promise<any> {
+    return this.http.get(devUrl + logoutUrl).toPromise();
   }
 }

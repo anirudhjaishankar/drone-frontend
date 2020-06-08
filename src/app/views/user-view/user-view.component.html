@@ -4,7 +4,7 @@
     <span class="fill-space"></span>
     <span class="user-name">{{username}}</span>
     <button mat-raised-button color="accent" (click)="logout()">
-      <mat-icon svgIcon="logout"></mat-icon><span class="logout-text">logout</span>
+      <mat-icon svgIcon="logout" class="logout"></mat-icon><span class="logout-text">logout</span>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -13,12 +13,12 @@
   <mat-sidenav opened mode="side" class="sidenav">
     <div class="sidenav-link-container">
       <mat-list class="sidenav-link-list">
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider>
         <a routerLink="/home/dashboard" routerLinkActive="link-active">
           <mat-list-item class="sidenav-link">
             <mat-icon svgIcon="dashboard"></mat-icon><span class="list-text">Dashboard</span>
           </mat-list-item>
-        </a>
+        </a> -->
         <mat-divider></mat-divider>
         <a routerLink="/home/drones" routerLinkActive="link-active">
           <mat-list-item class="sidenav-link">
@@ -37,12 +37,12 @@
             <mat-icon svgIcon="feed"></mat-icon><span class="list-text">Feeds</span>
           </mat-list-item>
         </a>
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider>
         <a routerLink="/home/location" routerLinkActive="link-active">
           <mat-list-item class="sidenav-link">
             <mat-icon svgIcon="location"></mat-icon><span class="list-text">Locations</span>
           </mat-list-item>
-        </a>
+        </a> -->
         <mat-divider></mat-divider>
         <a routerLink="/home/settings" routerLinkActive="link-active">
           <mat-list-item class="sidenav-link">
@@ -50,6 +50,12 @@
           </mat-list-item>
         </a>
         <mat-divider></mat-divider>
+        <a *ngIf="role === 1" routerLink="/home/users" routerLinkActive="link-active">
+          <mat-list-item class="sidenav-link">
+            <mat-icon svgIcon="users"></mat-icon><span class="list-text">Users</span>
+          </mat-list-item>
+        </a>
+        <mat-divider *ngIf="role === 1"></mat-divider>
       </mat-list>
     </div>
   </mat-sidenav>

@@ -1,0 +1,58 @@
+.component-body {
+  height: 100vh;
+
+  .page-header {
+    font-family: 'Montserrat', Roboto;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .no-content {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .no-content-text {
+    font-size: 2rem;
+    font-family: 'Montserrat', Roboto;
+    color: grey;
+  }
+
+  .card-container {
+    display: flex;
+
+    .card-div {
+      margin: 2vh 2vw 2vh 2vw;
+      height: 50vh;
+      width: 15vw;
+
+      .drone-img {
+        height: 20.5vh;
+      }
+
+      h3 {
+        font-family: 'Montserrat', Roboto;
+      }
+
+      .location {
+        font-family: 'Montserrat', Roboto;
+        display: block;
+      }
+
+      .action-buttons {
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+    }
+  }
+
+  .float-button {
+    position: absolute;
+    top: 80vh;
+    left: 78vw;
+    z-index: 2;
+  }
+}

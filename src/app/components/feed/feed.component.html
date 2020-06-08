@@ -1,1 +1,96 @@
-<p>feed works!</p>
+<div class='component-body'>
+  <h1 class="page-header">Feeds</h1>
+  <mat-divider></mat-divider>
+  <mat-tab-group>
+    <mat-tab label="Ongoing">
+      <div class='no-content' *ngIf="!ongoingSchedules || ongoingSchedules.length === 0">
+        <span class='no-content-text'>No Schedules</span>
+      </div>
+      <div class='card-container' *ngIf="ongoingSchedules">
+        <div class='card-div' *ngFor="let schedule of ongoingSchedules">
+          <mat-card class='card mat-elevation-z4'>
+            <mat-card-header>
+              <mat-card-title>{{schedule.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-img src="../../../assets/images/video.png" class='drone-img' alt="Drone Abstract Image">
+            <mat-card-content>
+              <h3>Details</h3>
+              <span class='location'>Date: {{schedule.date}}</span>
+              <span class='location'>Time: {{schedule.time}}</span>
+              <span class='location'>Route: {{schedule.route}}</span>
+              <span class='location'>Drone: {{schedule.drone}}</span>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-mini-fab color='warn' (click)="deleteDroneSchedule(schedule.id)" class="action-buttons">
+                <mat-icon svgIcon="delete"></mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Scheduled">
+      <div class='no-content' *ngIf="!scheduledSchedules || scheduledSchedules.length === 0">
+        <span class='no-content-text'>No Schedules</span>
+      </div>
+      <div class='card-container' *ngIf="scheduledSchedules">
+        <div class='card-div' *ngFor="let schedule of scheduledSchedules">
+          <mat-card class='card mat-elevation-z4'>
+            <mat-card-header>
+              <mat-card-title>{{schedule.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-img src="../../../assets/images/video.png" class='drone-img' alt="Drone Abstract Image">
+            <mat-card-content>
+              <h3>Details</h3>
+              <span class='location'>Route: {{schedule.route}}</span>
+              <span class='location'>Drone: {{schedule.drone}}</span>
+              <span class='location'>Route: {{schedule.route}}</span>
+              <span class='location'>Drone: {{schedule.drone}}</span>
+              <a class="link" (click)="redirect(schedule.id)">Click here to watch processed video</a>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-mini-fab color='warn' (click)="deleteDroneSchedule(schedule.id)" class="action-buttons">
+                <mat-icon svgIcon="delete"></mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Uploaded">
+      <div class='no-content' *ngIf="!uploadedSchedules || uploadedSchedules.length === 0">
+        <span class='no-content-text'>No Schedules</span>
+      </div>
+      <div class='card-container' *ngIf="uploadedSchedules">
+        <div class='card-div' *ngFor="let schedule of uploadedSchedules">
+          <mat-card class='card mat-elevation-z4'>
+            <mat-card-header>
+              <mat-card-title>{{schedule.name}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-img src="../../../assets/images/video.png" class='drone-img' alt="Drone Abstract Image">
+            <mat-card-content>
+              <h3>Details</h3>
+              <span class='location'>Route: {{schedule.route}}</span>
+              <span class='location'>Drone: {{schedule.drone}}</span>
+              <a class="link" (click)="redirect(schedule.id)">Click here to watch processed video</a>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-mini-fab color='warn' (click)="deleteDroneSchedule(schedule.id)" class="action-buttons">
+                <mat-icon svgIcon="delete"></mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Completed">
+      <div class='no-content' *ngIf="!completedSchedules || completedSchedules.length === 0">
+        <span class='no-content-text'>No Schedules</span>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+  <button mat-fab color="accent" class="float-button" (click)="addDroneScheduleDialogOpen()">
+    <mat-icon svgIcon="add"></mat-icon>
+  </button>
+</div>

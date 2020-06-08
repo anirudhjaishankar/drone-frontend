@@ -1,0 +1,54 @@
+<h1 mat-dialog-title class='dialog-title'>Add Schedule</h1>
+<mat-radio-group aria-label="Select Video input method">
+  <mat-radio-button value="true" [(ngModel)]="isSchedule" name="scheduled" ngDefaultControl [checked]="true">Scheduled
+  </mat-radio-button>
+  <mat-radio-button value="false" [(ngModel)]="isSchedule" name="upload" ngDefaultControl>Video Upload
+  </mat-radio-button>
+</mat-radio-group>
+<div mat-dialog-content [formGroup]='form'>
+  <mat-form-field class='input'>
+    <mat-label>Schedule Name</mat-label>
+    <input matInput formControlName='name'>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <mat-label>Select drone</mat-label>
+    <mat-select formControlName='drone'>
+      <mat-option *ngFor="let drone of allAvailableDrones" [value]="drone.name">
+        {{drone.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="input">
+    <mat-label>Select route</mat-label>
+    <mat-select formControlName='route'>
+      <mat-option *ngFor="let route of allAvailableRoutes" [value]="route.pathName">
+        {{route.pathName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="isSchedule === 'false'">
+    <input type="file" ng2FileSelect [uploader]="uploader" formControlName="file">
+  </div>
+
+  <div *ngIf="isSchedule === 'true'">
+    <mat-form-field class='input'>
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker [startAt]="dateNow"></mat-datepicker>
+    </mat-form-field>
+
+    <div class="custom-theme-example">
+      <ngb-timepicker formControlName="time" [meridian]="true"></ngb-timepicker>
+    </div>
+  </div>
+
+
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="close()" color="danger">Cancel</button>
+  <button mat-raised-button (click)="addDroneSchedule(this.form.value)" color="accent" cdkFocusInitial>Add</button>
+</div>

@@ -1,0 +1,23 @@
+.component-body {
+  height: 100vh;
+
+  .page-header {
+    font-family: 'Montserrat', Roboto;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .table {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
+  .float-button {
+    position: absolute;
+    top: 80vh;
+    left: 78vw;
+  }
+}
